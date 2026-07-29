@@ -125,6 +125,7 @@ namespace client
     void status() 
     {
         bool running = xray::is_running();
+        // TODO: Сделать кастомизируемой саму иконку
         std::cout << "{"
             << "\"text\": \"" << (running ? "󰌆 VPN" : "󰌊 VPN") << "\","
             << "\"class\": \"" << (running ? "hedgehog-on" : "hedgehog-off") << "\","
