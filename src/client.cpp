@@ -35,6 +35,19 @@ namespace client
         return 0;
     }
 
+    int pick(const char* name)
+    {
+        auto path = Config::get_configs_dir() / (name);
+        if (!std::filesystem::exists(path)) { 
+            std::cerr << "Config not found\n"; 
+            return 1; 
+        }
+        std::filesystem::copy_file(path, Config::get_active_config_path(),
+            std::filesystem::copy_options::overwrite_existing);
+        std::cout << "Activated: " << name << "\n";
+        return 0;
+    }
+
     int load(const char* url)
     {
         proxy::Config cfg = proxy::parse_config(url);
@@ -128,8 +141,9 @@ namespace client
         // TODO: Сделать кастомизируемой саму иконку
         std::cout << "{"
             << "\"text\": \"" << (running ? "󰌆 VPN" : "󰌊 VPN") << "\","
-            << "\"class\": \"" << (running ? "hedgehog-on" : "hedgehog-off") << "\","
+            << "\"class\": \"" << (running ? "on" : "off") << "\","
             << "\"tooltip\": \"" << (running ? "hedgehog is active" : "hedgehog is turned off") << "\","
             << "}\n";
     }
+
 }

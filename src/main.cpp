@@ -48,20 +48,25 @@ int main(int argc, char* argv[])
     }
     else if (cmd == "load") { 
         if (argc < 3) {
-            std::cerr << "No url was passed to the function \n";
-            std::cout << "Use hedgehog load protocol://url\n";
+            std::cout << "Use hedgehog load <subscription url>\n";
             return 1;
         }
         return client::load(argv[2]);
     }
     else if (cmd == "fetch") {
         if (argc < 3) {
-            std::cerr << "No url was passed to the function \n";
-            std::cout << "Use hedgehog load https://url\n";
+            std::cout << "Use hedgehog fetch <url>\n";
             return 1;
         }
         return client::fetch(argv[2]);
 
+    }
+    else if (cmd == "pick") {
+        if (argc < 3) {
+            std::cout << "Use hedgehog pick <name.json>\n";
+            return 1;
+        }
+        return client::pick(argv[2]);
     }
     else if (cmd == "status") {
         client::status();
