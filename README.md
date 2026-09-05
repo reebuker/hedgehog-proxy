@@ -39,6 +39,6 @@ You can also locate your styles file, usually at
     font-size: 1.3rem;
 }
 
-#custom-hedgehog.hedgehog-off { color: red }
-#custom-hedgehog.hedgehog-on { color: green }
+#custom-hedgehog.off { color: red }
+#custom-hedgehog.on { color: green }
 ```
